@@ -33,7 +33,6 @@ function FixedContainer({ getFixedExpenses }) {
   }, [expenses, getFixedExpenses]);
 
   const handleSubmit = () => {
-    console.log(expenseAmount);
     setExpenses([
       ...expenses,
       { id: expenses.length + 1, name: expenseName, amount: expenseAmount },

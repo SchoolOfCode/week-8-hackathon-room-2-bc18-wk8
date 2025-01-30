@@ -8,21 +8,18 @@ import { useState } from "react";
 function AppContainer() {
   const [income, setIncome] = useState(0);
   const [fixedExpenses, setFixedExpenses] = useState(0);
-  const [totalSliderAmount, setTotalSliderAmount] = useState(0);
+  const [totalSliderAmount, setTotalSliderAmount] = useState([]);
 
   function getIncome(value) {
     setIncome(value);
-    console.log(income);
   }
 
   function getFixedExpenses(value) {
     setFixedExpenses(value);
-    console.log(fixedExpenses);
   }
 
   function getTotalSliderAmount(value) {
     setTotalSliderAmount(value);
-    console.log(totalSliderAmount);
   }
 
   return (
@@ -31,7 +28,7 @@ function AppContainer() {
       <Card.Body>
         <Income getIncome={getIncome} />
         <FixedContainer getFixedExpenses={getFixedExpenses} />
-        <SliderContainer setTotalSliderAmount={getTotalSliderAmount} />
+        <SliderContainer getTotalSliderAmount={getTotalSliderAmount} />
         <RemainderContainer
           income={income}
           fixedExpenses={fixedExpenses}

@@ -2,11 +2,21 @@ import { useState } from "react";
 import CardContainer from "../CardComponent/Card.jsx";
 import SliderExpense from "./SliderExpense/SliderExpense.jsx";
 
-function SliderContainer() {
-  const [sliders, setSliders] = useState([{ id: 1, name: "", amount: 0 }]);
+function SliderContainer({ getTotalSliderAmount }) {
+  const [sliders, setSliders] = useState([]);
 
   const addNewSlider = () => {
-    setSliders([...sliders, { id: sliders.length + 1, name: "", amount: 0 }]);
+    setSliders([...sliders, { id: sliders.length, value: 0 }]);
+  };
+
+  const updateSliderValue = (id, newValue) => {
+    const updatedSliders = sliders.map((slider) =>
+      slider.id === id ? { ...slider, value: newValue } : slider
+    );
+    setSliders(updatedSliders);
+
+    // Extract only the values and pass them as an array to `getTotalSliderAmount`
+    getTotalSliderAmount(updatedSliders.map((s) => s.value));
   };
 
   return (
@@ -15,7 +25,12 @@ function SliderContainer() {
         content={
           <>
             {sliders.map((slider) => (
-              <SliderExpense key={slider.id} />
+              <SliderExpense
+                key={slider.id}
+                getTotalSliderAmount={(value) =>
+                  updateSliderValue(slider.id, value)
+                }
+              />
             ))}
             <button onClick={addNewSlider}>Add New Slider</button>
           </>
