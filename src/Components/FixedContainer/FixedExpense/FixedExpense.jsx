@@ -1,8 +1,8 @@
-function FixedExpense() {
+function FixedExpense({ name, amount }) {
   return (
     <>
-      <input placeholder="Input Expense Name"></input>
-      <input placeholder="Input Expense Cost"></input>
+      <input value={name} placeholder="Input Expense Name" />
+      <input value={amount} placeholder="Input Expense Cost" />
       <button>Add expense</button>
     </>
   );
