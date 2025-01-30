@@ -3,7 +3,6 @@ function FixedExpense({ name, amount }) {
     <>
       <input value={name} placeholder="Input Expense Name" />
       <input value={amount} placeholder="Input Expense Cost" />
-      <button>Add expense</button>
     </>
   );
 }

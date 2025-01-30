@@ -1,10 +1,19 @@
-import Card from "../CardComponent/Card.jsx";
+import CardContainer from "../CardComponent/Card.jsx";
 
-function RemainderContainer() {
+function RemainderContainer({ income, fixedExpenses }) {
+  let incomeInt = parseInt(income);
+  let expensesInt = parseInt(fixedExpenses);
+
+  function calculateRemainder(income, expenses) {
+    return income - expenses - 100;
+  }
+
   return (
-    <Card>
-      <Card.Body>This is some text within a card body.</Card.Body>
-    </Card>
+    <>
+      <CardContainer
+        content={<p>{calculateRemainder(incomeInt, expensesInt)}</p>}
+      />
+    </>
   );
 }
 
