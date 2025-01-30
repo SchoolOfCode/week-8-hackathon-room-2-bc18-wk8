@@ -37,7 +37,7 @@ function FixedContainer({ getFixedExpenses }) {
   const handleSubmit = () => {
     setExpenses([
       ...expenses,
-      { id: expenses.length + 1, name: expenseName, amount: expenseAmount }
+      { id: expenses.length + 1, name: expenseName, amount: expenseAmount },
     ]);
     setExpenseName("");
     setExpenseAmount(0);
@@ -66,7 +66,10 @@ function FixedContainer({ getFixedExpenses }) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label>Expense Amount</Form.Label>
               <Form.Control
                 onChange={(e) => setExpenseAmount(parseInt(e.target.value))}
@@ -86,9 +89,9 @@ function FixedContainer({ getFixedExpenses }) {
         </Modal.Footer>
       </Modal>
 
-      <div style={{ maxHeight: '200px', overflowY: 'auto', marginTop: '20px' }}>
+      <div className="expenses-container">
         {expenses.map((expense) => (
-          <Card key={expense.id} className="mb-2" style={{ backgroundColor: "#FAFFFF" }}>
+          <Card key={expense.id} className="mb-2 expense-card">
             <Card.Body>
               <Card.Title>{expense.name}</Card.Title>
               <Card.Text>£{expense.amount}</Card.Text>

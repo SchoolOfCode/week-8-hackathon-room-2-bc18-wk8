@@ -10,3 +10,16 @@
 .custom-button:hover {
   background-color: #a3dff7;
 }
+
+.expenses-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.expense-card {
+  width: 300px;
+  background-color: #faffff;
+}
