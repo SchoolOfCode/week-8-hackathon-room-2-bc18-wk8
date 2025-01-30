@@ -28,7 +28,15 @@ function AppContainer() {
       <Card.Header style={{ backgroundColor: "white" }}>
         <img src={BBLogo} alt="Budget Buddy Logo" style={{ width: "200px" }} />
       </Card.Header>
-      <Card.Body>
+      <Card.Body
+        style={{
+          backgroundColor: "grey",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
         <Income getIncome={getIncome} />
         <FixedContainer getFixedExpenses={getFixedExpenses} />
         <SliderContainer getTotalSliderAmount={getTotalSliderAmount} />

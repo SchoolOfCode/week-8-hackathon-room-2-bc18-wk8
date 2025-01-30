@@ -1,6 +1,8 @@
 import { useState } from "react";
-import CardContainer from "../CardComponent/Card.jsx";
+import Card from "react-bootstrap/Card";
 import SliderExpense from "./SliderExpense/SliderExpense.jsx";
+import Button from "react-bootstrap/Button";
+import "./SliderContainer.css/";
 
 function SliderContainer({ getTotalSliderAmount }) {
   const [sliders, setSliders] = useState([]);
@@ -20,23 +22,21 @@ function SliderContainer({ getTotalSliderAmount }) {
   };
 
   return (
-    <>
-      <CardContainer
-        content={
-          <>
-            {sliders.map((slider) => (
-              <SliderExpense
-                key={slider.id}
-                getTotalSliderAmount={(value) =>
-                  updateSliderValue(slider.id, value)
-                }
-              />
-            ))}
-            <button onClick={addNewSlider}>Add New Slider</button>
-          </>
-        }
-      />
-    </>
+    <div className="slider-container">
+      {sliders.map((slider) => (
+        <Card key={slider.id} className="mb-2 expense-card">
+          <Card.Body>
+            <SliderExpense
+              getTotalSliderAmount={(value) =>
+                updateSliderValue(slider.id, value)
+              }
+            />
+          </Card.Body>
+        </Card>
+      ))}
+
+      <Button onClick={addNewSlider}>Add New Slider</Button>
+    </div>
   );
 }
 

@@ -11,7 +11,7 @@
   background-color: #a3dff7;
 }
 
-.expenses-container {
+.slider-container {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
@@ -25,11 +25,11 @@
   overflow-y: auto;
   width: 50%;
 }
-.expenses-container::-webkit-scrollbar {
+.slider-container::-webkit-scrollbar {
   display: none;
 }
 
-.expense-card {
+.slider-card {
   width: 50%;
   background-color: #85b0f1;
 }

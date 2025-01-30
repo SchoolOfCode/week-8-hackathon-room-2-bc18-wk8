@@ -1,5 +1,3 @@
-import CardContainer from "../CardComponent/Card.jsx";
-import FixedExpense from "./FixedExpense/FixedExpense.jsx";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
@@ -46,10 +44,6 @@ function FixedContainer({ getFixedExpenses }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Expense
-      </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Fixed Expense</Modal.Title>
@@ -98,6 +92,9 @@ function FixedContainer({ getFixedExpenses }) {
             </Card.Body>
           </Card>
         ))}
+        <Button variant="primary" onClick={handleShow}>
+          Add Expense
+        </Button>
       </div>
     </>
   );
