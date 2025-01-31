@@ -18,8 +18,8 @@ function SliderExpense({ id, getTotalSliderAmount }) {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission behavior
-      setIsEditing(false); // Hide input after Enter key
+      event.preventDefault();
+      setIsEditing(false);
     }
   };
 

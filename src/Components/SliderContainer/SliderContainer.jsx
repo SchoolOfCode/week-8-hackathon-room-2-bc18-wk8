@@ -17,7 +17,6 @@ function SliderContainer({ getTotalSliderAmount }) {
     );
     setSliders(updatedSliders);
 
-    // Extract only the values and pass them as an array to `getTotalSliderAmount`
     getTotalSliderAmount(updatedSliders.map((s) => s.value));
   };
 

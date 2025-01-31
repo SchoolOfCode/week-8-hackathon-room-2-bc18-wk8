@@ -4,7 +4,6 @@ import FixedContainer from "../FixedContainer/FixedContainer.jsx";
 import SliderContainer from "../SliderContainer/SliderContainer.jsx";
 import RemainderContainer from "../RemainderContainer/RemainderContainer.jsx";
 import { useState } from "react";
-// import BBLogo from "../../assets/BBLogo.png";
 import "./AppContainer.css";
 import { FaBootstrap, FaReact } from "react-icons/fa";
 import { LiaPiggyBankSolid } from "react-icons/lia";
