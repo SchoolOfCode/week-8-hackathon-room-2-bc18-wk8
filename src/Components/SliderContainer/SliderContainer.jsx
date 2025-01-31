@@ -35,7 +35,9 @@ function SliderContainer({ getTotalSliderAmount }) {
         </Card>
       ))}
 
-      <Button onClick={addNewSlider}>Add New Slider</Button>
+      <Button className="button" onClick={addNewSlider}>
+        Add New Slider
+      </Button>
     </div>
   );
 }

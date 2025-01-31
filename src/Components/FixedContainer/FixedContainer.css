@@ -1,20 +1,22 @@
-.custom-button {
-  background-color: #ecf0f3;
-  color: rgb(31, 2, 2);
+.button {
+  background-color: #0d6efd;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: auto;
 }
 
-.custom-button:hover {
-  background-color: #a3dff7;
+.button:hover {
+  background-color: #3183ff;
 }
 
 .expenses-container {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  /* justify-content: flex-end; */
   align-items: center;
   gap: 10px;
   background-color: rgb(8, 38, 137);
@@ -22,6 +24,7 @@
   padding: 10px;
   margin: 10px;
   max-height: 350px;
+  height: 40%;
   overflow-y: auto;
   width: 50%;
 }
@@ -31,5 +34,5 @@
 
 .expense-card {
   width: 50%;
-  background-color: #85b0f1;
+  background-color: #a3dff7;
 }

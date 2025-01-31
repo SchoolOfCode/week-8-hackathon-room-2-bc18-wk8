@@ -16,9 +16,12 @@ function RemainderContainer({ income, fixedExpenses, sliderExpenses }) {
     return remainingFunds.toFixed(2);
   };
 
+  const remainder = calculateRemainder(income, fixedExpenses, sliderExpenses);
+  const remainderClass = remainder < 0 ? "negative" : "positive";
+
   return (
     <div className="remainder-container">
-      <Card className="mb-2 expense-card">
+      <Card className={`mb-2 ${remainderClass}`}>
         <Card.Body className="d-flex flex-column justify-content-center align-items-center">
           <Card.Title>Remainder</Card.Title>
           <Card.Text style={{ fontSize: "1.5rem", fontWeight: "bold" }}>

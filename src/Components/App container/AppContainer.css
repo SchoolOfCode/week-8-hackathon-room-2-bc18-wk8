@@ -1,0 +1,27 @@
+.text-muted {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.react {
+  margin: 20px;
+}
+
+.bootstrap {
+  margin: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  margin: 5px;
+  font-family: sans-serif;
+  font-size: xx-large;
+}

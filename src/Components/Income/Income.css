@@ -1,0 +1,5 @@
+.income-input::-webkit-outer-spin-button,
+.income-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

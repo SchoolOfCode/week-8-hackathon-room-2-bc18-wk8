@@ -7,10 +7,7 @@ import Card from "react-bootstrap/Card";
 import "./FixedContainer.css"; // Ensure this path is correct
 
 function FixedContainer({ getFixedExpenses }) {
-  const [expenses, setExpenses] = useState([
-    { id: 1, name: "Rent", amount: 1000 },
-    { id: 2, name: "Utilities", amount: 100 },
-  ]);
+  const [expenses, setExpenses] = useState([]);
 
   const [show, setShow] = useState(false);
 
@@ -92,7 +89,7 @@ function FixedContainer({ getFixedExpenses }) {
             </Card.Body>
           </Card>
         ))}
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="button" variant="primary" onClick={handleShow}>
           Add Expense
         </Button>
       </div>
