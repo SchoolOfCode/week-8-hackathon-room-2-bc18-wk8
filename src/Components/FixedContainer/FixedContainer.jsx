@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
-import "./FixedContainer.css"; // Ensure this path is correct
+import "./FixedContainer.css";
 
 function FixedContainer({ getFixedExpenses }) {
   const [expenses, setExpenses] = useState([]);
