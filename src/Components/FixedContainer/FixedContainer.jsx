@@ -1,16 +1,13 @@
-import CardContainer from "../CardComponent/Card.jsx";
-import FixedExpense from "./FixedExpense/FixedExpense.jsx";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import Card from "react-bootstrap/Card";
+import "./FixedContainer.css"; // Ensure this path is correct
 
 function FixedContainer({ getFixedExpenses }) {
-  const [expenses, setExpenses] = useState([
-    { id: 1, name: "Rent", amount: 1000 },
-    { id: 2, name: "Utilities", amount: 100 },
-  ]);
+  const [expenses, setExpenses] = useState([]);
 
   const [show, setShow] = useState(false);
 
@@ -37,75 +34,71 @@ function FixedContainer({ getFixedExpenses }) {
       ...expenses,
       { id: expenses.length + 1, name: expenseName, amount: expenseAmount },
     ]);
+    setExpenseName("");
+    setExpenseAmount(0);
     handleClose();
   };
 
   return (
     <>
-      <CardContainer
-        content={
-          <>
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Form>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="exampleForm.ControlInput1"
-                  >
-                    <Form.Label>Expense Name</Form.Label>
-                    <Form.Control
-                      onChange={(e) => setExpenseName(e.target.value)}
-                      type="text"
-                      placeholder="Type in an expense"
-                      autoFocus
-                    />
-                  </Form.Group>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="exampleForm.ControlTextarea1"
-                  >
-                    <Form.Label>Expense Amount</Form.Label>
-                    <Form.Control
-                      onChange={(e) =>
-                        setExpenseAmount(parseInt(e.target.value))
-                      }
-                      type="number"
-                      placeholder="Type in an expense amount"
-                    />
-                  </Form.Group>
-                </Form>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleSubmit}>
-                  Save Changes
-                </Button>
-              </Modal.Footer>
-            </Modal>
-            {expenses.map((expense) => (
-              <FixedExpense
-                key={expense.id}
-                name={expense.name}
-                amount={expense.amount}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Fixed Expense</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formExpenseName">
+              <Form.Label>Expense Name</Form.Label>
+              <Form.Control
+                onChange={(e) => setExpenseName(e.target.value)}
+                type="text"
+                placeholder="Type in an expense"
+                autoFocus
               />
-            ))}
-            <button onClick={handleShow}>Add a new Expense</button>
-          </>
-        }
-      />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Expense Amount</Form.Label>
+              <Form.Control
+                onChange={(e) => setExpenseAmount(parseInt(e.target.value))}
+                type="number"
+                placeholder="Type in an expense amount"
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <div className="expenses-container">
+        {expenses.map((expense) => (
+          <Card key={expense.id} className="mb-2 expense-card">
+            <Card.Body>
+              <Card.Title>{expense.name}</Card.Title>
+              <Card.Text>£{expense.amount}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+        <Button className="button" variant="primary" onClick={handleShow}>
+          Add Expense
+        </Button>
+      </div>
     </>
   );
 }
 
 FixedContainer.propTypes = {
-  expenses: PropTypes.array,
-  setExpenses: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  getFixedExpenses: PropTypes.func.isRequired,
 };
 
 export default FixedContainer;

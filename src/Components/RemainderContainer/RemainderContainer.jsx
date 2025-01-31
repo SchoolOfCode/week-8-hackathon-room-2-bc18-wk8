@@ -1,34 +1,35 @@
-import CardContainer from "../CardComponent/Card.jsx";
+import { useState } from "react";
+import Card from "react-bootstrap/Card";
+import "./RemainderContainer.css";
 
 function RemainderContainer({ income, fixedExpenses, sliderExpenses }) {
-  let incomeInt = parseInt(income);
-  let expensesInt = parseInt(fixedExpenses);
-  const sliderExpensesArray = sliderExpenses.map((expense) =>
-    parseInt(expense)
-  ); // Ensure all are numbers
+  const [remainders, setRemainders] = useState([]);
 
-  function calculateRemainder(income, expenses, sliderPercentages) {
-    let remainingFunds = income - expenses;
+  const calculateRemainder = (income, expenses, sliderPercentages) => {
+    let remainingFunds = parseInt(income) - parseInt(expenses);
 
-    // Apply each slider percentage sequentially
     sliderPercentages.forEach((percentage) => {
       let reduction = remainingFunds * (percentage / 100);
       remainingFunds -= reduction;
     });
 
-    return remainingFunds;
-  }
+    return remainingFunds.toFixed(2);
+  };
+
+  const remainder = calculateRemainder(income, fixedExpenses, sliderExpenses);
+  const remainderClass = remainder < 0 ? "negative" : "positive";
 
   return (
-    <>
-      <CardContainer
-        content={
-          <p>
-            {calculateRemainder(incomeInt, expensesInt, sliderExpensesArray)}
-          </p>
-        }
-      />
-    </>
+    <div className="remainder-container">
+      <Card className={`mb-2 ${remainderClass}`}>
+        <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+          <Card.Title>Remainder</Card.Title>
+          <Card.Text style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+            £{calculateRemainder(income, fixedExpenses, sliderExpenses)}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 
